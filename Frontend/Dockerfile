@@ -1,5 +1,5 @@
 # Stage 1: Build React app with Node.js
-FROM node:18 AS build 
+FROM node:18 AS build  # Use Node.js v18 or later
 
 # Set working directory in the container
 WORKDIR /app
