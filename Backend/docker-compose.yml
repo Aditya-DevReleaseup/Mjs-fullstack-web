@@ -9,7 +9,7 @@ networks:
 services:
   api-backend:
     build:
-      context: .
+      context: Dockerfile
     restart: always
     container_name: api-backend-prod
     env_file:
