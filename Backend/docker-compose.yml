@@ -1,0 +1,25 @@
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  api-backend:
+    build:
+      context: .
+    restart: always
+    container_name: api-backend-prod
+    env_file:
+      - .env
+    labels:
+      - "traefik.http.routers.api-backend.rule=Host(`api-backend.devclouds.site`)"
+      - "traefik.http.routers.api-backend.tls=true"
+      - "traefik.http.routers.api-backend.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.api-backend.loadbalancer.server.port=3000"
+    networks:
+      - web
+
+  
+
+ 
