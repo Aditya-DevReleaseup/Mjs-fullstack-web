@@ -9,8 +9,8 @@ networks:
 services:
   api-backend:
     build:
-      context: ./Mjs-fullstack-web/Backend  # Correct path to Backend folder
-      dockerfile: Dockerfile  # Optional, if the file is named Dockerfile
+      context: .  # Use the current directory (Backend) as the build context
+      dockerfile: Dockerfile  # Optional, it's the default if named 'Dockerfile'
     restart: always
     container_name: api-backend-prod
     env_file:
@@ -25,4 +25,4 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./Mjs-fullstack-web/Backend/data:/app/data
+      - ./data:/app/data  # Example volume (optional)
