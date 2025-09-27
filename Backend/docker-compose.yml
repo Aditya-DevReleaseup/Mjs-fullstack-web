@@ -1,4 +1,4 @@
-version: '3.8'  # Optional, specify version
+version: '3.8'
 
 networks:
   web:
@@ -9,7 +9,8 @@ networks:
 services:
   api-backend:
     build:
-      context: Dockerfile
+      context: ./Backend  # Specify the subdirectory where the Dockerfile is
+      dockerfile: Dockerfile  # This is optional, Docker will find it automatically
     restart: always
     container_name: api-backend-prod
     env_file:
