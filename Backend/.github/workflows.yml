@@ -11,7 +11,7 @@ jobs:
   Production-Image:
     runs-on: [self-hosted-india]
     name: Building Production APP
-    if: github.ref == 'refs/heads/main1'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout Repository
