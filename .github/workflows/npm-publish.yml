@@ -16,19 +16,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Check Docker Compose Version
-        run: docker-compose --version
+        run: docker compose --version
 
       - name: Build Docker image for Production
         run: |
           cd Mjs-fullstack-web/Backend  # Ensure you're in the Backend folder where docker-compose.yml is
           pwd
           ls  # List files to make sure docker-compose.yml is there
-          sudo docker-compose build api-backend  # Build the image using docker-compose
+          sudo docker compose build api-backend  # Build the image using docker-compose
 
       - name: Deploy Docker container for Production
         run: |
           cd Mjs-fullstack-web/Backend  # Ensure you're in the Backend folder
-          sudo docker-compose up -d api-backend  # Start the container in detached mode
+          sudo docker compose up -d api-backend  # Start the container in detached mode
 
       - name: Clean Docker Cache
         run: |
