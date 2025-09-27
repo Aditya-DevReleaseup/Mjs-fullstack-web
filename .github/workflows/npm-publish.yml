@@ -3,7 +3,7 @@ name: CI/CD for Surveyor API
 on:
   push:
     branches:
-      - main
+      - main1
      
 jobs:
   Production-Image:
