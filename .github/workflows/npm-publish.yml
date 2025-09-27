@@ -15,21 +15,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Check Docker Compose Version
+      - name: Debug Current Directory
         run: |
           echo "Current directory: $(pwd)"
-          ls -l  # List files in the current directory to see if Mjs-fullstack-web exists
+          ls -l  # List files to see the structure
 
       - name: Build Docker image for Production
         run: |
-          cd Mjs-fullstack-web/Backend  # Ensure you're in the Backend folder where docker-compose.yml is
+          cd Backend  # Change to the Backend folder (relative to where we are now)
           pwd
           ls  # List files to make sure docker-compose.yml is there
           sudo docker compose build api-backend  # Build the image using docker-compose
 
       - name: Deploy Docker container for Production
         run: |
-          cd Mjs-fullstack-web/Backend  # Ensure you're in the Backend folder
+          cd Backend  # Change to Backend folder again (if necessary)
           sudo docker compose up -d api-backend  # Start the container in detached mode
 
       - name: Clean Docker Cache
