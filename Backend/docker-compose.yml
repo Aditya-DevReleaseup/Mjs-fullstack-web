@@ -9,7 +9,7 @@ networks:
 services:
   api-backend:
     build:
-      context: ./Backend  # Specify the subdirectory where the Dockerfile is
+      context: .  # Specify the subdirectory where the Dockerfile is
       dockerfile: Dockerfile  # This is optional, Docker will find it automatically
     restart: always
     container_name: api-backend-prod
