@@ -1,29 +1,32 @@
-# Step 1: Use an official Node.js runtime as a parent image
-FROM node:18 AS build
+# Step 1: Build the React app
+FROM node:16 AS build
 
-# Step 2: Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Step 3: Copy the package.json and package-lock.json (or yarn.lock)
+# Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
-# Step 4: Install dependencies
+# Install dependencies
 RUN npm install
 
-# Step 5: Copy the rest of the application files
-COPY . .
+# Copy the rest of the app source code
+COPY . ./
 
-# Step 6: Build the app using Vite
+# Build the React app
 RUN npm run build
 
-# Step 7: Use a lightweight web server to serve the static files
+# Step 2: Serve with Nginx
 FROM nginx:alpine
 
-# Step 8: Copy the build output to Nginx's public directory
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy the build files from the previous build stage to Nginx's web server directory
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Step 9: Expose the port the app runs on
+# Copy custom nginx.conf to replace the default one
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80 to access the React app
 EXPOSE 80
 
-# Step 10: Start Nginx server
+# Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
