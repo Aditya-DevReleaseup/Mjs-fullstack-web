@@ -20,6 +20,8 @@ jobs:
       - name: Building Docker image for Production
         run: |
           cd Backend 
+          pwd
+          ls
           sudo docker compose build api-backend
 
       - name: Deploying Docker container for Production
