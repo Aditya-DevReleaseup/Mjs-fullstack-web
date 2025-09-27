@@ -20,7 +20,8 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the build files from the previous build stage to Nginx's web server directory
-COPY --from=build /app/build /usr/share/nginx/html
+# Change '/app/build' to '/app/dist' (correct directory for Vite)
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Copy custom nginx.conf to replace the default one
 COPY nginx.conf /etc/nginx/nginx.conf
