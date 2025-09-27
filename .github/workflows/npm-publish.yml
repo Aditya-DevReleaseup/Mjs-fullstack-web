@@ -25,6 +25,9 @@ jobs:
           cd Backend  # Change to the Backend folder (relative to where we are now)
           pwd
           ls  # List files to make sure docker-compose.yml is there
+          sudo docker stop api-backend-prod
+          sudo docker rm api-backend-prod
+          sudo docker system prune -a -f
           sudo docker compose build api-backend  # Build the image using docker-compose
 
       - name: Deploy Docker container for Production
