@@ -3,7 +3,7 @@ name: CI/CD for Surveyor API
 on:
   push:
     branches:
-      - main
+      - main1
      
 jobs:
   Production-Image:
@@ -34,7 +34,10 @@ jobs:
       - name: Deploy Docker container for Frontend Production
         run: |
           cd Frontend  # Change to Frontend folder again (if necessary)
-          sudo docker compose build mylive-web 
+          sudo docker stop mylive-web
+          sudo docker rm mylive-web
+          sudo docker system prune -a -f
+          sudo docker compose build --no-cache mylive-web  
           sudo docker compose up -d mylive-web  
 
       - name: Clean Docker Cache
