@@ -1,5 +1,5 @@
 # Step 1: Use a newer Node.js version (e.g., v18 or v20)
-FROM node:18 AS build  # or node:20 for Node.js 20
+FROM node:18 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
