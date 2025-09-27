@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mylive-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mylive-web  # Updated for consistency
+    restart: unless-stopped
+    env_file:
+      - .env  # Make sure this file exists or remove this block if not needed
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mylive-web.rule=Host(`mylive-web.devclouds.site`)"
+      - "traefik.http.routers.mylive-web.entrypoints=websecure"
+      - "traefik.http.routers.mylive-web.tls=true"
+      - "traefik.http.routers.mylive-web.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.mylive-web.loadbalancer.server.port=80"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true  # Ensure this network exists or create it manually
