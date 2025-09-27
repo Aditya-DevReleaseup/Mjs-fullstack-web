@@ -36,5 +36,5 @@ _A dynamic networking platform built for developers to connect, collaborate, and
 ---
 
 ##  📂Repositories
-- **Frontend Repository:** [Frontend GitHub Repo](https://github.com/GautamSharma03/DevMatch-web)
-- **Backend Repository:** [Backend GitHub Repo](https://github.com/GautamSharma03/DevMatch)
+- **Frontend Repository:** [Frontend GitHub Repo](https://github.com/Aditya-DevReleaseup/Mjs-fullstack-web/tree/main/Frontend)
+- **Backend Repository:** [Backend GitHub Repo](https://github.com/Aditya-DevReleaseup/Mjs-fullstack-web/tree/main/Backend)
