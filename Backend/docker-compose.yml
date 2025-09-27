@@ -1,3 +1,5 @@
+version: '3.8'  # Optional, specify version
+
 networks:
   web:
     external: true
@@ -19,7 +21,3 @@ services:
       - "traefik.http.services.api-backend.loadbalancer.server.port=3000"
     networks:
       - web
-
-  
-
- 
